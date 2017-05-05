@@ -13,7 +13,22 @@ function done(){
     url: "http://localhost:3000/characters",
     success: function(data){
       data.forEach(function(char){
-        $('.name').append(`<p>${char.name}</p><button type="button" class="btn" data-id="${char.id}" id="info">More Info</button>`)
+        $('.name').append(`<div class="row center">
+        <div class="col s6">
+          <div class="card center">
+            <div class="card-image">
+              <img src="http://icons.iconarchive.com/icons/musett/dragon-ballz/256/Dragon-Ball-icon.png">
+              <span class="card-title">${char.name}</span>
+            </div>
+            <div class="card-content">
+            </div>
+            <div class="card-action">
+            <button type="button" class="btn" data-id="${char.id}" id="info">More Info</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      `)
       })
     }
   }).then(moreInfo)
@@ -35,6 +50,7 @@ function moreInfo(){
             <li>${data.DOB}</li>
             <li>${data.special_techniques}</li>
           </ul>
+          <a href="" src="location.reload()">Back</a>
           `)
       }
     })

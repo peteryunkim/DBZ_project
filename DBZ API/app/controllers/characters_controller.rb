@@ -21,7 +21,7 @@ class CharactersController < ApplicationController
   private
 
   def character_params
-    params.require(:character).permit(:name, :race, :power_level, :DOB, :special_techniques)
+    params.require(:character).permit(:name, :race, :power_level, :DOB, :special_techniques, :img)
   end
 
 

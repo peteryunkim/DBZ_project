@@ -12,7 +12,7 @@ class CharactersController < ApplicationController
 
 
   def create
-    byebug
+    # byebug
     @character = Character.new(character_params)
     render json: @character
   end

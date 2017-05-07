@@ -63,17 +63,25 @@ function createFighter(){
 
   $('#addCharacter').on('submit', function(event){
     event.preventDefault()
-    // const $name = $('#name').val()
-    // const $race = $('#race').val()
-    // const $power_level = $('#power_level').val()
-    // const $DOB = $('#DOB').val()
-    // const $special_techniques = $('#special_techniques').val()
-    var form = new FormData(this)
+    const $name = $('#name').val()
+    const $race = $('#race').val()
+    const $power_level = $('#power_level').val()
+    const $DOB = $('#DOB').val()
+    const $special_techniques = $('#special_techniques').val()
+    // var form = new FormData(this)
     // debugger
     $.ajax({
       method: 'post',
       url: "http://localhost:3000/characters",
-      data: form,
+      data: { character: {
+        name: $name,
+        race: $race,
+        power_level: $power_level,
+        DOB: $DOB,
+        special_techniques: $special_techniques
+        }
+      },
+      // data: form,
       success: function(data){
         $('.name').append(`<div class="row center">
         <div class="col s8">
@@ -82,15 +90,16 @@ function createFighter(){
               <img src="http://icons.iconarchive.com/icons/musett/dragon-ballz/256/Dragon-Ball-icon.png">
             </div>
             <div class="card-content">
-            <span class="card-title center">${char.name}</span>
+            <span class="card-title center">${data.name}</span>
 
             </div>
             <div class="card-action">
-            <button type="button" class="btn amber accent-2" data-id="${char.id}" id="info">More Info</button>
+            <button type="button" class="btn amber accent-2" data-id="${data.id}" id="info">More Info</button>
             </div>
           </div>
         </div>
-      </div>`)
+      </div>
+      `)
       }
     })
   })
